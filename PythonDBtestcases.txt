@@ -1,0 +1,46 @@
+Python and database test cases
+
+###############################################################################
+The first test case makes sure that the data gets inserted into the table
+
+def insertData() :
+     format_str = """INSERT INTO RecTable (state)
+     VALUES ({state});"""
+     try:
+          sql_command = format_str.format(state = 1)
+          cursor.execute(sql_command)
+     except mc.Error as e:
+         print("Error %d: %s" % (e.args[0], e.args[1]))
+         sys.exit(1)
+
+Depending on the error, it will throw code corresponding to the error
+
+###################################################################################
+The second test case makes sure that we can connect to the database
+
+def connectDatabase(host1,user1,passwd1,db1):
+     try:
+         connection = mc.connect(host = host1,user = user1,passwd = passwd1,db = db1)
+     except mc.Error as e:
+         print("Error %d: %s" % (e.args[0], e.args[1]))
+         sys.exit(1)
+
+
+Depending on the error, it will throw code corresponding to the error
+
+######################################################################################
+The third test case compares our connect attempt with one that will obviously fail
+
+def test_sql_connection(self):
+        self.assertIsNot(pymssql.connect(server = 'database.cs.tamu.edu',user = 'runner123g',password = 'gramcaki', database = 'runner123g'), 
+        	pymssql.connect(server = 'fakeserver',user = 'fakeuser',password = 'fakepassword', database = 'fakedb'))
+
+If both of these functions fail then they will be equal and we will get an error
+#####################################################################################
+class TestDB(unittest.TestCase):
+    def Connectdb(self):
+       self.assertEqual(connectDatabase(host1,user1,passwd1,db1),connection)
+
+    def CreateTable(self):
+        self.assertEqual(connectDatabase(insertData(),1)
+ -Runs test cases by establishing a coneection and inserting data since that is all we do in the python/SQL interaction

@@ -1,0 +1,29 @@
+Python/Arduino test cases
+
+##########################################################################################
+First test case: Test connection to the board
+
+def connectArdunio(port):
+     try:
+          board = Arduino(port)
+     except:
+          print("Unable to connect to Ardunio")
+          sys.exit(1)
+
+If we are unable to connect to the board we will get the message above and exit the 
+program
+
+
+##########################################################################################
+Second and third test cases: Making sure sensors are reading correctly
+
+	def test_sensor_one(self):
+		self.assertTrue(sensor1.read() == 0 || 1, "Unreasonable value from sensor 1")
+	## Sensor should return 0 or 1, nothing else
+
+	def test_sensor_two(self):
+		self.assertTrue(sensor2.read() == 0 || 1, "Unreasonable value from sensor 2")
+	## Same as before, the sensor should return 0 or 1
+
+This code is in our unittesting file, if the sensors give an unexpected value we will get an error
+

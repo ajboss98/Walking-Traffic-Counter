@@ -1,0 +1,10 @@
+//Used to create a table inside python 
+     sql_command = """CREATE TABLE `runner123g`.`RecTable` (
+     `numPeople` INT(15) UNSIGNED NOT NULL AUTO_INCREMENT ,
+     `state` TINYINT(1) NOT NULL ,
+     `curTime` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+     PRIMARY KEY (`numPeople`)) ENGINE = InnoDB;"""
+	 
+Note: sql_command holds the string to create the table with code
+	Creates three columns for number of people, state of whether
+	entering or exiting, and current time of entrance.

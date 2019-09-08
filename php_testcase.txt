@@ -1,0 +1,57 @@
+<?php
+
+	//Function used to connect to server/database
+	function connectToDB($db,$username,$password,$dbname)
+	{
+		
+		$con = mysqli_connect($db,$username,$password);//connection
+		try
+		{
+		
+		if(!$con){//Checks if connected to server successfully
+			throw new Exception('Server does not Exist<Br>Check database server name<br>');
+		}
+	
+		if(!mysqli_select_db($con,$dbname)){//Checks if database exits
+			throw new Exception('Did not connect to Database<br>Check database name');
+		}
+	    	} catch (Exception $e) {
+        	    print "Error!: " . $e->getMessage() . "<br/>"; //prints the error
+	            die();//aborts
+        	}
+		return $con;
+	}
+
+	function editdb($con,$sql)// connect to MySQL DB Server
+	{
+		try
+		{
+			if(!mysqli_query($con,$sql)){
+				throw new Exception('Data edit unsuccessful');
+			}
+		}
+		catch (Exception $e) {
+        	    print "Error!: " . $e->getMessage() . "<br/>"; //prints the error
+	            die();//aborts
+        	}
+	}
+	
+    //function to check int output
+    function int_check($val)
+	{
+		try
+		{
+            //is_int() function return bool if the value is an integer
+			if(is_int($val) == false){
+				throw new Exception('Data is not an Integer');
+			}
+		}
+		catch (Exception $e) {
+        	    print "Error: " . $e->getMessage() . "<br/>"; 
+	            die();
+        	}
+	}
+	
+	
+	
+?>

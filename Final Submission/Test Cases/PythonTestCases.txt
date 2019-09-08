@@ -1,0 +1,18 @@
+import unittest
+
+class TestArduinoMethods(unittest.TestCase):
+
+    def test_wifi_connection(self):
+        self.assertTrue(Socket.Connect(hostname,port))
+	# Sets wifi connection based on hostname and port 
+		
+    def test_sql_connection(self):
+        self.assertTrue(pymssql.connect(server = '',user = '',password = '', database = ''))
+	# Uses pymssql library to connect to our sql database, we will input credentials later
+	
+	def check_input(self):
+		self.assertTrue(Readdata() > 0)
+	# Readdata will be created later using our sensors
+
+if __name__ == '__main__':
+    unittest.main()
